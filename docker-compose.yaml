@@ -1,7 +1,7 @@
 services:
   localstack:
     image: localstack/localstack:latest
-    container_name: localstack_main
+    container_name: localstack
     ports:
       - "4566:4566"            # LocalStack Gateway
       - "4571:4571"            # LocalStack Edge Port
@@ -9,7 +9,7 @@ services:
       - SERVICES=s3,lambda,dynamodb,apigateway
       - DEBUG=1
       - WEB_UI=1
-      - DATA_DIR=/tmp/localstack/data
+      - DATA_DIR=/var/lib/localstack/data
     volumes:
-      - "./localstack_data:/tmp/localstack"
-      - "/var/run/docker.sock:/var/run/docker.sock" # Required for lambda to work
+      - "./localstack_data:/var/lib/localstack/data"
+      - "/var/run/docker.sock:/var/run/docker.sock" # Required for lambda to work properly
