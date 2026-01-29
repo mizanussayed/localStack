@@ -26,6 +26,7 @@ services:
       - WEB_UI=1 # Enable the web interface
     volumes:
       - "./localstack_data:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock" # Required for Lambda execution
 ```
 Then, run the following command to start LocalStack:
 ```bash
